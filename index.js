@@ -1,86 +1,99 @@
-const bienvenidoTurno = prompt("Bienvenido a Multideportes, alquiler de canchas")
-let ingreseNombre = prompt("Ingrese su nombre y Apellido")
+//este esta con error antes de la correcion 31/8/22
+let nombreUsuario
+let edadUsuario
+let deporteElegido
+let horarioElegido
+let desicion
 
-let ingreseDni = parseInt(prompt("DNI"))
-if (isNaN(ingreseDni)) {
-    alert("Ud no coloco un número")
-}
+alert("Bienvenido al gestor de horas de Multideportes, Espacio deportivo")
+nombreUsuario = prompt("Ingrese su nombre y Apellido")
+    alert("Bienvenido" + " " + nombreUsuario)
 
-
-let edad = parseInt(prompt("Ingrese su edad"))
-if (edad >= 18) {
-    alert("Bienvenido al gestor de reservas de Multideportes")
-
-} else {
-    alert("No puede sacar turno por ser menor de edad.")
-}
-
-let numeroCelular = parseInt(prompt("Coloque número de contacto"))
-
-if (isNaN(numeroCelular)) {
-    alert("Ud no coloco un número")
-}
-
-
-let continuar = true
-
-while (continuar) {
-
-    let canchaSolicitada = parseInt(prompt('Que cancha desea reservar: \n 1. Cancha de Futbol 5 \n 2. Cancha de Padel \n 3. Cancha de Tenis'))
-
-    if (isNaN(canchaSolicitada)) {
-        alert("Ud no coloco un número")
-    } else if (canchaSolicitada === 1) {
-        alert("Ud. selecciono Cancha de futbol 5");
-        
-        continuar = false
-    } else if (canchaSolicitada === 2) {
-        alert("Ud. selecciono Cancha de Padel")
-        
-        continuar = false
-    } else if (canchaSolicitada === 3) {
-        alert("Ud. selecciono Cancha de Tenis")
-        
-        continuar = false
-    } else {
-        alert("Ud. selecciono una opcion inválida")
+/*edadUsuario = parseInt(prompt("Ingrese su edad"));{
+    if(edadUsuario >=18){
+        alert("Eres mayor de edad, a continuación podras elegir el deporte")
+    }else{
+    edadUsuario =  alert("No puedes sacar turno por que eres menor de edad")
     }
     
+}*/
+
+edadUsuario = prompt("Elige: 1: Soy mayor de edad - 2: Soy menor de edad")
+    while(edadUsuario !="1" && edadUsuario != "2")
+    
+        switch(edadUsuario){
+            case"1":
+                alert("Eres mayor de edad")
+                break
+        }
+    
+        switch(edadUsuario){
+
+            default:
+            alert("No tienes permitido realizar reservas")
+            break
+        }
+
+deporteElegido = prompt("¿Tu deporte es Futbol, Tenis o Padel?")    
+    if(deporteElegido === "Futbol")
+        alert("Elegiste Futbol")
+    else if(deporteElegido === "Tenis")
+        alert("Elegiste Tenis")
+    else if(deporteElegido === "Padel")
+        alert("Elegiste Padel")
+    else{
+deporteElegido = prompt("Tienes que elegir un deporte valido")
 }
 
-    let horarioTurno = parseInt(prompt('Turnos a reservar \n 1. 19:00 hs \n 2. 20:00 hs \n 3. 21:00 hs \n 4. 22:00 hs \n 5. 23:00 hs \n 6. 00:00 hs'))
+    alert("Ahora indica el horario que necesitas")
 
-    if (isNaN(horarioTurno)) {
-        alert("Ud no coloco un número")
-    } else if (horarioTurno === 1) {
-        alert("Turno 19:00 hs");
-        
-        continuar = false
-    } else if (horarioTurno === 2) {
-        alert("Turno 20:00 hs")
-        
-        continuar = false
-    } else if (horarioTurno === 3) {
-        alert("Turno 21:00 hs")
-        
-        continuar = false
-    } else if(horarioTurno === 4){
-        alert("Turno 22:00 hs")
+horarioElegido = prompt("Horarios disponibles. 19hs , 20hs, 21hs, 22 hs, 23hs")
 
-        continuar = false
-    } else if(horarioTurno === 5){
-        alert("Turno 23:00 hs")
+    while(horarioElegido != "19hs" && horarioElegido != "20hs" && horarioElegido != "21hs" && horarioElegido != "22hs" && horarioElegido != "23hs"){
 
-        continuar = false
-    } else if(horarioTurno === 6){
-        alert("Turno 00:00hs")
+        switch(horarioElegido){
+            case "19hs":
+                alert("Elegiste 19 hs")
+            break
 
-        continuar = false
-    } else {
-        alert("Ud. selecciono una opcion inválida")
-    }
+            case "20hs":
+                alert("Elegiste 20 hs")
+            break
 
-    function turnoResultado(canchaSolicitada, horarioTurno) {
-        console.log(canchaSolicitada + " " + horarioTurno);
+            case "21hs":
+            alert("Elegiste 21 hs")
+            break
+
+            case "22hs":
+            alert("Elegiste 22 hs")
+            break
+
+            case "23hs":
+            alert("Elegiste 23 hs")
+            break
+
+            default:    
+            alert("No elegiste un horario disponible")
+            break
+
+        }
+    
+        horarioElegido = prompt("Por favor escriba un horario válido")
+    
     }
     
+    alert(nombreUsuario + " " + "Elegiste" + " " + deporteElegido + " " + "en el horario de las" + " " + horarioElegido)
+
+function multiplicar() {
+    const numero1 = parseInt(prompt("Cuantas horas desee alquilar"))
+    alert("El costo de la hora por cancha es de $1200")
+    const resultado = numero1 * 1200
+    alert("El monto total a abonar es de $" + " " + resultado)
+}
+    multiplicar()
+
+function calcularLuz(resultado){
+    const Luz = 500
+    return resultado + Luz
+}
+    calcularLuz()
