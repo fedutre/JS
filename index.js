@@ -1,10 +1,11 @@
-//Original sin Arrays
 let nombreUsuario
 let edadUsuario
 let deporteElegido
 let horarioElegido
 let desicion
 let resultado = 0;
+const opcionBebida = ["isotonica" , "Cerveza" , "Agua" , "Agua saborizada"] 
+
 alert("Bienvenido al gestor de horas de Multideportes, Espacio deportivo")
 nombreUsuario = prompt("Ingrese su nombre y Apellido")
 alert("Bienvenido" + " " + nombreUsuario)
@@ -68,6 +69,77 @@ if(edadUsuario >=18){
         return resultado + luz
     }
     alert("Su valor con luz es $" + calcularLuz(resultado))
+
+    const bebidas =[
+        {Nombre:"Bebida isotonica", precio: 350},
+        {Nombre:"Cerveza", precio: 500},
+        {Nombre:"Agua", precio: 250},
+        {Nombre:"Agua saborizada", precio: 400},
+        {Nombre:"Gaseosa", precio: 450},
+        ];
+
+let carrito =[]
+
+let opcionBebida = prompt("Indique si desea bebidas, Elija si o no")
+while(opcionBebida != "si" && opcionBebida != "no"){
+    alert("Solo debes indicar SI o NO")
+    opcionBebida = prompt("Indica si necesitas bebidas")
+}
+if (opcionBebida =="si"){
+    alert("A continuacion nuestra lista de bebidas para que selecciones")
+    let todaslasBebidas = bebidas.map(
+        (bebidas) => bebidas.Nombre + " " + bebidas.precio + "$"
+    );
+    alert(todaslasBebidas.join(" - "))
+}else if(opcionBebida=="no"){
+    alert("En la cancha podras elegir tambien si deseas cambiar de opinión")
+}
+
+while(opcionBebida != "no"){
+    let bebida = prompt("Agrega la bebida que deseas")
+    let precio = 0
+
+    if(bebida == "bebida isotonica" || bebida == "cerveza" || bebida == "agua" || bebida == "agua saborizada" || bebida == "gaseosa"){
+        switch(bebida){
+            case "bebida isotonica":
+                precio = 350;
+                break;
+            case "cerveza":
+                precio = 500;
+                break;
+            case "agua":
+                precio = 250;
+                break;
+            case "agua saborizada":
+                precio = 400;
+                break;
+            case "gaseosa":
+                precio = 450;
+                break;
+            default:
+                break;
+        }
+    let cantidad = parseInt(prompt("¿Cuantas unidades desea?"))
+
+    carrito.push({bebida, cantidad, precio})
+    console.log(carrito)
+    }else {
+        alert("No tenemos ese producto")
+    }
+    opcionBebida = prompt("¿Desea adquirir alguna bebida mas?")
+    while(opcionBebida == "no"){
+        alert("Gracias por adquirir su bebida")
+        carrito.forEach((carritoFinal) =>{
+        alert(`Bebidas elegidas: ${carritoFinal.bebida}, Unidades: ${carritoFinal.cantidad}, Total a pagar de bebidas ${carritoFinal.cantidad * carritoFinal.precio}`)
+        })
+    break;
+    }
+}
+
+const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)
+alert(`el total a pagar por el alquiler y la bebida es: ${total + calcularLuz(resultado)}`)
+
+
 }else{
     alert("No puedes sacar turno por que eres menor de edad")
 }
